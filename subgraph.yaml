@@ -1,0 +1,56 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: SocialNetwork
+    network: optimism-sepolia
+    source:
+      address: "0xfe2ea5b1fF17f1c869f3DE596942Cf4a73D2E21d"
+      abi: SocialNetwork
+      startBlock: 19265909
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - CommentAdded
+        - EtherWithdrawn
+        - Followed
+        - MessageSent
+        - PostCreated
+        - PostDeleted
+        - PostEdited
+        - PostLiked
+        - PostUnliked
+        - ProfileCreated
+        - Unfollowed
+      abis:
+        - name: SocialNetwork
+          file: ./abis/SocialNetwork.json
+      eventHandlers:
+        - event: CommentAdded(indexed address,uint256,string)
+          handler: handleCommentAdded
+        - event: EtherWithdrawn(indexed address,uint256,uint256)
+          handler: handleEtherWithdrawn
+        - event: Followed(indexed address,indexed address)
+          handler: handleFollowed
+        - event: MessageSent(indexed address,indexed address,string)
+          handler: handleMessageSent
+        - event: PostCreated(indexed address,uint256,string)
+          handler: handlePostCreated
+        - event: PostDeleted(indexed address,uint256)
+          handler: handlePostDeleted
+        - event: PostEdited(indexed address,uint256,string)
+          handler: handlePostEdited
+        - event: PostLiked(indexed address,uint256)
+          handler: handlePostLiked
+        - event: PostUnliked(indexed address,uint256)
+          handler: handlePostUnliked
+        - event: ProfileCreated(indexed address,string,uint256)
+          handler: handleProfileCreated
+        - event: Unfollowed(indexed address,indexed address)
+          handler: handleUnfollowed
+      file: ./src/social-network.ts

@@ -1,0 +1,104 @@
+type CommentAdded @entity(immutable: true) {
+  id: Bytes!
+  commenter: Bytes! # address
+  postID: BigInt! # uint256
+  comment: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type EtherWithdrawn @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  amount: BigInt! # uint256
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Followed @entity(immutable: true) {
+  id: Bytes!
+  follower: Bytes! # address
+  following: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MessageSent @entity(immutable: true) {
+  id: Bytes!
+  sender: Bytes! # address
+  recipient: Bytes! # address
+  message: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PostCreated @entity(immutable: true) {
+  id: Bytes!
+  author: Bytes! # address
+  postID: BigInt! # uint256
+  postType: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PostDeleted @entity(immutable: true) {
+  id: Bytes!
+  author: Bytes! # address
+  postID: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PostEdited @entity(immutable: true) {
+  id: Bytes!
+  editor: Bytes! # address
+  postID: BigInt! # uint256
+  newDescription: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PostLiked @entity(immutable: true) {
+  id: Bytes!
+  liker: Bytes! # address
+  postID: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PostUnliked @entity(immutable: true) {
+  id: Bytes!
+  unliker: Bytes! # address
+  postID: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ProfileCreated @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  name: String! # string
+  userID: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Unfollowed @entity(immutable: true) {
+  id: Bytes!
+  follower: Bytes! # address
+  following: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
