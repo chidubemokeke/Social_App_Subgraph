@@ -16,41 +16,41 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - CommentAdded
-        - EtherWithdrawn
+        - ProfileCreated
         - Followed
-        - MessageSent
+        - Unfollowed
         - PostCreated
         - PostDeleted
-        - PostEdited
         - PostLiked
         - PostUnliked
-        - ProfileCreated
-        - Unfollowed
+        - CommentAdded
+        - MessageSent
+        - PostEdited
+        - EtherWithdrawn
       abis:
         - name: SocialNetwork
           file: ./abis/SocialNetwork.json
       eventHandlers:
-        - event: CommentAdded(indexed address,uint256,string)
-          handler: handleCommentAdded
-        - event: EtherWithdrawn(indexed address,uint256,uint256)
-          handler: handleEtherWithdrawn
+        - event: ProfileCreated(indexed address,string,uint256)
+          handler: handleProfileCreated
         - event: Followed(indexed address,indexed address)
           handler: handleFollowed
-        - event: MessageSent(indexed address,indexed address,string)
-          handler: handleMessageSent
+        - event: Unfollowed(indexed address,indexed address)
+          handler: handleUnfollowed
         - event: PostCreated(indexed address,uint256,string)
           handler: handlePostCreated
         - event: PostDeleted(indexed address,uint256)
           handler: handlePostDeleted
-        - event: PostEdited(indexed address,uint256,string)
-          handler: handlePostEdited
         - event: PostLiked(indexed address,uint256)
           handler: handlePostLiked
         - event: PostUnliked(indexed address,uint256)
           handler: handlePostUnliked
-        - event: ProfileCreated(indexed address,string,uint256)
-          handler: handleProfileCreated
-        - event: Unfollowed(indexed address,indexed address)
-          handler: handleUnfollowed
+        - event: CommentAdded(indexed address,uint256,string)
+          handler: handleCommentAdded
+        - event: MessageSent(indexed address,indexed address,string)
+          handler: handleMessageSent
+        - event: PostEdited(indexed address,uint256,string)
+          handler: handlePostEdited
+        - event: EtherWithdrawn(indexed address,uint256,uint256)
+          handler: handleEtherWithdrawn
       file: ./src/social-network.ts
